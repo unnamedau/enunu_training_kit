@@ -26,6 +26,17 @@
 # SOFTWARE.
 #------------------------------------------------------------------------------
 
+if [ -z ${sample_rate+x} ]; then
+    echo "ERROR: sampler_rate must be set explicitly. Please add 'sample_rate: <value>' to config.yaml."
+    echo "e.g., sample_rate: 48000"
+    exit -1
+fi
+
+if [[ -z ${trajectory_smoothing+x} ]]; then
+    trajectory_smoothing=false
+    trajectory_smoothing_cutoff=50
+fi
+
 for s in ${datasets[@]};
 do
     if [ -d conf/prepare_features ]; then
@@ -39,7 +50,10 @@ do
         question_path=$question_path \
         timelag=$timelag_features \
         duration=$duration_features \
-        acoustic=$acoustic_features
+        acoustic=$acoustic_features \
+		acoustic.sample_rate=$sample_rate \
+		acoustic.trajectory_smoothing=${trajectory_smoothing} \
+		acoustic.trajectory_smoothing_cutoff=${trajectory_smoothing_cutoff}
 done
 
 # Compute normalization stats for each input/output
@@ -52,11 +66,16 @@ for inout in "in" "out"; do
     fi
     for typ in timelag duration acoustic;
     do
+		if [[ ${base_dump_norm_dir+x} && ! -z $base_dump_norm_dir ]]; then
+            ext="external_scaler=${base_dump_norm_dir}/${inout}_${typ}_scaler.joblib"
+        else
+            ext=""
+        fi
         find $dump_org_dir/$train_set/${inout}_${typ} -name "*feats.npy" > train_list.txt
         scaler_path=$dump_org_dir/${inout}_${typ}_scaler.joblib
         xrun $PYTHON_EXE -m nnsvs.bin.fit_scaler \
             list_path=train_list.txt \
-            scaler.class=$scaler_class \
+            scaler._target_=$scaler_class \
             out_path=$scaler_path
         rm -f train_list.txt
         cp -v $scaler_path $dump_norm_dir/${inout}_${typ}_scaler.joblib

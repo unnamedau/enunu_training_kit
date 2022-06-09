@@ -17,7 +17,7 @@ function xrun () {
 
 # use embed python executional file
 PYTHON_ROOT="python-3.8.10-embed-amd64"
-PYTHON_EXE="$PYTHON_ROOT/python.exe"
+PYTHON_EXE="python"
 PYTHON_SCRIPTS_ROOT="$PYTHON_ROOT/Scripts"
 CONFIG_PATH="config.yaml"
 
@@ -71,7 +71,7 @@ if [ ${stage} -le 0 ] && [ ${stop_stage} -ge 0 ]; then
     echo "#########################################"
     rm -rf $out_dir
     rm -f preprocess_data.py.log
-    $PYTHON_ROOT/python preprocess_data.py $CONFIG_PATH || exit 1;
+    python preprocess_data.py $CONFIG_PATH || exit 1;
     echo ""
 fi
 
@@ -176,6 +176,6 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ]; then
     echo "#  stage 7: Release preparation          #"
     echo "#                                        #"
     echo "##########################################"
-    $PYTHON_ROOT/python prepare_release.py $CONFIG_PATH || exit 1;
+    python prepare_release.py $CONFIG_PATH || exit 1;
     echo ""
 fi

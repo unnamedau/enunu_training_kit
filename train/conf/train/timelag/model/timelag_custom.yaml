@@ -5,7 +5,7 @@ has_dynamic_features: [false]
 stream_weights:       [1]
 
 netG:
-  _target_:           nnsvs.model.FeedForwardNet
+  _target_:           nnsvs.model.FFN
   in_dim:             221
   out_dim:            1
   hidden_dim:         128

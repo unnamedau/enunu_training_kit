@@ -40,7 +40,7 @@ if [ -z $duration_eval_checkpoint ]; then
     duration_eval_checkpoint=best_loss.pth
 fi
 if [ -z $acoustic_eval_checkpoint ]; then
-    acoustic_eval_checkpoint=latest.pth
+    acoustic_eval_checkpoint=best_loss.pth
 fi
 
 for s in ${testsets[@]}; do
@@ -51,6 +51,7 @@ for s in ${testsets[@]}; do
             ground_truth_duration=true
         fi
         xrun $PYTHON_EXE -m nnsvs.bin.synthesis $ext \
+			sample_rate=$sample_rate \
             question_path=$question_path \
             timelag=$timelag_synthesis \
             duration=$duration_synthesis \

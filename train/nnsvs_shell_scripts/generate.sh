@@ -31,10 +31,13 @@ for s in ${testsets[@]}; do
     for typ in timelag duration acoustic; do
         if [ $typ = "timelag" ]; then
             eval_checkpoint=$timelag_eval_checkpoint
+			model=$timelag_model
         elif [ $typ = "duration" ]; then
             eval_checkpoint=$duration_eval_checkpoint
+			model=$duration_model
         else
             eval_checkpoint=$acoustic_eval_checkpoint
+			model=$acoustic_model
         fi
 
         checkpoint=$expdir/$typ/${eval_checkpoint}

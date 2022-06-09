@@ -53,6 +53,8 @@ acoustic_features:          static_deltadelta
 # optional arg of "aperiodicity = pyworld.d4c()" in nnsvs/data/data_source.py (line 155)
 # d4c_threshold:            0.58
 
+trajectory_smoothing:        false
+trajectory_smoothing_cutoff: 50
 
 ###########################################################
 #          TRAINING SETTING  (STAGE 2 - STAGE 4)          #
@@ -64,15 +66,15 @@ acoustic_features:          static_deltadelta
 # specify the config name below
 # NOTE: *_model: model definition, *_train: general train configs, *_data: data configs (e.g., batch size)
 
-acoustic_model:             acoustic_conv
+acoustic_model:             acoustic_custom
 acoustic_train:             myconfig
 acoustic_data:              myconfig
 
-duration_model:             duration_lstm
+duration_model:             duration_custom
 duration_train:             myconfig
 duration_data:              myconfig
 
-timelag_model:              timelag_ffn
+timelag_model:              timelag_custom
 timelag_train:              myconfig
 timelag_data:               myconfig
 
@@ -80,6 +82,12 @@ timelag_data:               myconfig
 # pretrained_expdir:          exp/ritsu_enunu_rmdn_0831
 pretrained_expdir:
 
+timelag_hydra_optuna_sweeper_args:
+timelag_hydra_optuna_sweeper_n_trials: 100
+duration_hydra_optuna_sweeper_args:
+duration_hydra_optuna_sweeper_n_trials: 100
+acoustic_hydra_optuna_sweeper_args:
+acoustic_hydra_optuna_sweeper_n_trials: 100
 
 ###########################################################
 #         SYNTHESIS SETTING             (STAGE 6)         #
