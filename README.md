@@ -2,6 +2,8 @@
 
 USTとLABとＷAVがあれば楽にモデル生成できます。
 
+This is an edit that hopefully works with Colab as I go. I just got sick of editing files through the commands in Colab.
+
 ## 用途
 
 UST ファイルが同梱されている歌唱データベースから、[ENUNU](https://github.com/oatsu-gh/ENUNU) 用の歌声モデルを生成します。
