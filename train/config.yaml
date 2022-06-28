@@ -56,6 +56,13 @@ acoustic_features:          static_deltadelta
 trajectory_smoothing:        false
 trajectory_smoothing_cutoff: 50
 
+# test arguments for proper f0 range
+f0_floor: 150
+f0_ceil: 700
+
+# test argument for correct VUV
+correct_vuv: false
+
 ###########################################################
 #          TRAINING SETTING  (STAGE 2 - STAGE 4)          #
 ###########################################################

@@ -53,7 +53,10 @@ do
         acoustic=$acoustic_features \
 		acoustic.sample_rate=$sample_rate \
 		acoustic.trajectory_smoothing=${trajectory_smoothing} \
-		acoustic.trajectory_smoothing_cutoff=${trajectory_smoothing_cutoff}
+		acoustic.trajectory_smoothing_cutoff=${trajectory_smoothing_cutoff} \
+		acoustic.f0_floor=$f0_floor \
+		acoustic.f0_ceil=$f0_ceil \
+		acoustic.correct_vuv=$correct_vuv
 done
 
 # Compute normalization stats for each input/output
