@@ -7,7 +7,7 @@ max_train_steps:            -1
 nepochs:                    50
 checkpoint_epoch_interval:  20
 
-use_amp:                    false
+use_amp:                    true
 feats_criterion:            mse
 
 stream_wise_loss:           false
