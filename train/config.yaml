@@ -63,6 +63,9 @@ f0_ceil: 700
 # test argument for correct VUV
 correct_vuv: false
 
+# test argument for relative_f0
+relative_f0: true
+
 ###########################################################
 #          TRAINING SETTING  (STAGE 2 - STAGE 4)          #
 ###########################################################
