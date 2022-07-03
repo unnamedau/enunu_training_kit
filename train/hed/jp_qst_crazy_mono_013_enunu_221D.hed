@@ -33,6 +33,14 @@ QS "p3_L-Phone_Musei_Shiin"     {*^f-*,*^p-*,*^py-*,*^s-*,*^sh-*,*^ts-*,*^ch-*,*
 QS "p4_C-Phone_Musei_Shiin"     {*-f+*,*-p+*,*-py+*,*-s+*,*-sh+*,*-ts+*,*-ch+*,*-t+*,*-ty+*,*-k+*,*-ky+*,*-h+*,*-hy+*,*-fy+*,*-GlottalStop+*,*-Edge+*}
 QS "p5_R-Phone_Musei_Shiin"     {*+f=*,*+p=*,*+py=*,*+s=*,*+sh=*,*+ts=*,*+ch=*,*+t=*,*+ty=*,*+k=*,*+ky=*,*+h=*,*+hy=*,*+fy=*,*+GlottalStop=*,*+Edge=*}
 
+QS "L-VUV_Voiced"    {*^a-*,*^i-*,*^u-*,*^e-*,*^o-*,*^N-*,*^v-*,*^b-*,*^by-*,*^m-*,*^my-*,*^w-*,*^z-*,*^j-*,*^d-*,*^dy-*,*^n-*,*^ny-*,*^r-*,*^ry-*,*^g-*,*^gy-*,*^y-*}
+QS "C-VUV_Voiced"    {*-a+*,*-i+*,*-u+*,*-e+*,*-o+*,*-N+*,*-v+*,*-b+*,*-by+*,*-m+*,*-my+*,*-w+*,*-z+*,*-j+*,*-d+*,*-dy+*,*-n+*,*-ny+*,*-r+*,*-ry+*,*-g+*,*-gy+*,*-y+*}
+QS "R-VUV_Voiced"    {*+a=*,*+i=*,*+u=*,*+e=*,*+o=*,*+N=*,*+v=*,*+b=*,*+by=*,*+m=*,*+my=*,*+w=*,*+z=*,*+j=*,*+d=*,*+dy=*,*+n=*,*+ny=*,*+r=*,*+ry=*,*+g=*,*+gy=*,*+y=*}
+
+QS "L-VUV_Unvoiced"     {*^A-*,*^I-*,*^U-*,*^E-*,*^O-*,*^f-*,*^p-*,*^py-*,*^s-*,*^sh-*,*^ts-*,*^ch-*,*^t-*,*^ty-*,*^k-*,*^ky-*,*^h-*,*^hy-*,*^fy-*,*^GlottalStop-*,*^Edge-*}
+QS "C-VUV_Unvoiced"     {*-A+*,*-I+*,*-U+*,*-E+*,*-O+*,*-f+*,*-p+*,*-py+*,*-s+*,*-sh+*,*-ts+*,*-ch+*,*-t+*,*-ty+*,*-k+*,*-ky+*,*-h+*,*-hy+*,*-fy+*,*-GlottalStop+*,*-Edge+*}
+QS "R-VUV_Unvoiced"     {*+A=*,*+I=*,*+U=*,*+E=*,*+O=*,*+f=*,*+p=*,*+py=*,*+s=*,*+sh=*,*+ts=*,*+ch=*,*+t=*,*+ty=*,*+k=*,*+ky=*,*+h=*,*+hy=*,*+fy=*,*+GlottalStop=*,*+Edge=*}
+
 QS "p3_L-Phone_cl"  {*^cl-*}
 QS "p4_C-Phone_cl"  {*-cl+*}
 QS "p5_R-Phone_cl"  {*+cl=*}
@@ -193,36 +201,51 @@ QS "p3_L-Phone_Edge"          {*^Edge-*}
 QS "p4_C-Phone_Edge"          {*-Edge+*}
 QS "p5_R-Phone_Edge"          {*+Edge=*}
 
-CQS "d1_absolute_pitch" {/D:(\NOTE)!}
-CQS "e1_absolute_pitch" {/E:(\NOTE)]}
-CQS "f1_absolute_pitch" {/F:(\NOTE)#}
+# from r9y9/nnsvs/recipes/_common
 
-CQS "p12_position"              {-(\d+)!}
-CQS "p13_position"              {!(\d+)[}
-CQS "p14_distance_from_vowel"   {[(\d+)$}
-CQS "p15_distance_from_vowel"   {$(\d+)]}
+CQS "d1" {/D:(\NOTE)!}
+CQS "e1" {/E:(\NOTE)]}
+CQS "f1" {/F:(\NOTE)#}
 
-CQS "a1_number_of_phonemes"     {/A:(\d+)-}
-CQS "a2_position"               {-(\d+)-}
-CQS "a3_position"               {-(\d+)@}
+CQS "p12" {-(\d+)!}
+CQS "p13" {!(\d+)[}
 
-CQS "b1_number_of_phonemes"     {/B:(\d+)_}
-CQS "b2_position"               {_(\d+)_}
-CQS "b3_position"               {_(\d+)@}
+CQS "p15" {$(\d+)]}
+CQS "a1" {/A:(\d+)-}
+CQS "a2" {-(\d+)-}
+CQS "a3" {-(\d+)@}
 
-CQS "c1_number_of_phonemes"     {/C:(\d+)+}
-CQS "c2_position"               {+(\d+)+}
-CQS "c3_position"               {+(\d+)@}
+CQS "b1" {/B:(\d+)_}
+CQS "b2" {_(\d+)_}
+CQS "b3" {_(\d+)@}
 
-CQS "d6_length_by_syllable"     {|(\d+)&}
-CQS "d7_length_by_10ms"         {&(\d+);}
-CQS "d8_length_by_96th_note"    {;(\d+)-}
+CQS "c1" {/C:(\d+)+}
+CQS "c2" {+(\d+)+}
+CQS "c3" {+(\d+)@}
 
-CQS "e6_length_by_syllable"     {!(\d+)@}
-CQS "e7_length_by_10ms"         {@(\d+)#}
-CQS "e8_length_by_96th_note"    {#(\d+)+}
+CQS "d2" {!(\d+)#}
 
-CQS "e18_position_by_note"      {∼(\d+)#}
+CQS "d6" {|(\d+)&}
+CQS "d7" {&(\d+);}
+CQS "d8" {;(\d+)-}
+
+CQS "e2" {](\d+)^}
+
+CQS "e6" {!(\d+)@}
+CQS "e7" {@(\d+)#}
+CQS "e8" {#(\d+)+}
+
+CQS "e10_position_by_note_in_measure"      {](\d+)$}
+CQS "e11_position_by_note_in_measure"      {$(\d+)|}
+CQS "e12_position_by_10ms_in_measure"      {|(\d+)[}
+CQS "e13_position_by_10ms_in_measure"      {[(\d+)&}
+CQS "e14_position_by_96th_note_in_measure" {&(\d+)]}
+CQS "e15_position_by_96th_note_in_measure" {](\d+)=}
+CQS "e16_position_by_percent_in_measure"   {=(\d+)^}
+CQS "e17_position_by_percent_in_measure"   {^(\d+)~}
+
+# taken from enunu
+CQS "e18_position_by_note"      {~(\d+)#}
 CQS "e19_position_by_note"      {#(\d+)_}
 CQS "e20_position_by_10ms"      {_(\d+);}
 CQS "e21_position_by_10ms"      {;(\d+)$}
@@ -231,9 +254,11 @@ CQS "e23_position_by_96th_note" {&(\d+)%}
 CQS "e24_position_by_percent"   {%(\d+)[}
 CQS "e25_position_by_percent"   {[(\d+)|}
 
-CQS "e57_pitch_difference"      {~([pm]\d+)+}
-CQS "e58_pitch_difference"      {+([pm]\d+)!}
+CQS "e57" {~([pm]\d+)+}
+CQS "e58" {+([pm]\d+)!}
 
-CQS "f6_length_by_syllable"     {$(\d+)+}
-CQS "f7_length_by_10ms"         {+(\d+)%}
-CQS "f8_length_by_96th_note"    {%(\d+);}
+CQS "f2" {#(\d+)#}
+
+CQS "f6" {$(\d+)+}
+CQS "f7" {+(\d+)%}
+CQS "f8" {%(\d+);}
