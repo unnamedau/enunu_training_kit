@@ -58,5 +58,4 @@ xrun $PYTHON_EXE -m nnsvs.bin.train $ext $hydra_opt \
 	data.in_scaler_path=$dump_norm_dir/in_duration_scaler.joblib \
     data.out_scaler_path=$dump_norm_dir/out_duration_scaler.joblib \
     train.out_dir=$expdir/duration \
-	train.log_dir=tensorboard/${expname}_${duration_model} \
     train.resume.checkpoint=$resume_checkpoint $post_args

@@ -58,4 +58,4 @@ xrun $PYTHON_EXE -m nnsvs.bin.train $ext $hydra_opt \
 	data.in_scaler_path=$dump_norm_dir/in_timelag_scaler.joblib \
     data.out_scaler_path=$dump_norm_dir/out_timelag_scaler.joblib \
     train.out_dir=$expdir/timelag \
-    train.resume.checkpoint=$resume_checkpoint
+    train.resume.checkpoint=$resume_checkpoint $post_args
