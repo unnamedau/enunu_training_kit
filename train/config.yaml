@@ -88,6 +88,10 @@ timelag_model:              timelag_custom
 timelag_train:              myconfig
 timelag_data:               myconfig
 
+postfilter_model:           postfilter_merged
+postfilter_train:           mgc
+postfilter_data:            myconfig
+
 # Pretrained model dir (leave empty to disable)
 # pretrained_expdir:          exp/ritsu_enunu_rmdn_0831
 pretrained_expdir:
