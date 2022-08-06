@@ -39,7 +39,12 @@ do
     xrun $PYTHON_EXE -m nnsvs.bin.prepare_static_features $ext acoustic=$acoustic_features \
         in_dir=$dump_norm_dir/$s/out_acoustic/ \
         out_dir=$dump_norm_dir/$s/out_postfilter \
-        utt_list=data/list/$s.list
+        utt_list=data/list/$s.list \
+		acoustic.sample_rate=$sample_rate \
+		acoustic.f0_floor=$f0_floor \
+		acoustic.f0_ceil=$f0_ceil \
+		acoustic.correct_vuv=$correct_vuv \
+		acoustic.relative_f0=$relative_f0
 done
 
 
