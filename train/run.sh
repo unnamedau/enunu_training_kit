@@ -17,7 +17,7 @@ function xrun () {
 
 # use embed python executional file
 PYTHON_ROOT="python-3.8.10-embed-amd64"
-PYTHON_EXE="python3.9"
+PYTHON_EXE="python3.8"
 PYTHON_SCRIPTS_ROOT="$PYTHON_ROOT/Scripts"
 CONFIG_PATH="config.yaml"
 
