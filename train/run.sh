@@ -17,7 +17,7 @@ function xrun () {
 
 # use embed python executional file
 PYTHON_ROOT="python-3.8.10-embed-amd64"
-PYTHON_EXE="python"
+PYTHON_EXE="python3.9"
 PYTHON_SCRIPTS_ROOT="$PYTHON_ROOT/Scripts"
 CONFIG_PATH="config.yaml"
 
@@ -71,7 +71,7 @@ if [ ${stage} -le 0 ] && [ ${stop_stage} -ge 0 ]; then
     echo "#########################################"
     rm -rf $out_dir
     rm -f preprocess_data.py.log
-    python preprocess_data.py $CONFIG_PATH || exit 1;
+    python3.8 preprocess_data.py $CONFIG_PATH || exit 1;
     echo ""
 fi
 
@@ -213,7 +213,7 @@ if [ ${stage} -le 10 ] && [ ${stop_stage} -ge 10 ]; then
     echo "#  stage 10: Merge postfilter models     #"
     echo "#                                        #"
     echo "##########################################"
-    python $NNSVS_SHELL_SCRIPTS_ROOT/merge_postfilters.py $expdir/postfilter_mgc/latest.pth $expdir/postfilter_bap/latest.pth $expdir/postfilter_merged || exit 1;
+    python3.8 $NNSVS_SHELL_SCRIPTS_ROOT/merge_postfilters.py $expdir/postfilter_mgc/latest.pth $expdir/postfilter_bap/latest.pth $expdir/postfilter_merged || exit 1;
     echo ""
 fi
 
@@ -224,6 +224,6 @@ if [ ${stage} -le 99 ] && [ ${stop_stage} -ge 99 ]; then
     echo "#  stage 99: Release preparation         #"
     echo "#                                        #"
     echo "##########################################"
-    python prepare_release.py $CONFIG_PATH || exit 1;
+    python3.8 prepare_release.py $CONFIG_PATH || exit 1;
     echo ""
 fi
